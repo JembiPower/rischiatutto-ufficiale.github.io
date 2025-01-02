@@ -4,29 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rischiatutto</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game-container">
-        <div id="logo-container">
-            <h1>Rischiatutto</h1>
-        </div>
+    <div id="game">
+        <div id="logo">RISCHIATUTTO</div>
         <div id="categories">
-            <!-- Categories and points will be dynamically populated by JavaScript -->
+            <!-- Categories and Questions will be dynamically loaded here -->
         </div>
     </div>
 
-    <div id="question-modal" class="hidden">
-        <div id="question-content">
-            <h2 id="question-text"></h2>
+    <!-- Modal for Question -->
+    <div id="questionModal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="questionText"></h2>
             <div id="answers">
-                <!-- Answers will be dynamically populated -->
+                <!-- Answers will be dynamically loaded here -->
             </div>
-            <button id="close-question">Torna al gioco</button>
+            <button id="closeModal">Torna al gioco</button>
+        </div>
+    </div>
+
+    <!-- Team Selection Modal -->
+    <div id="teamModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Seleziona la tua squadra</h2>
+            <div id="teamSelection">
+                <button class="teamButton" data-team="1">Squadra 1</button>
+                <button class="teamButton" data-team="2">Squadra 2</button>
+                <button class="teamButton" data-team="3">Squadra 3</button>
+                <button class="teamButton" data-team="4">Squadra 4</button>
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
