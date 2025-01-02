@@ -1,73 +1,99 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const categories = ["Storia", "Geografia", "Sport", "Scienze", "Cultura Generale", "Musica"];
-    const points = [1000, 2000, 3000, 4000, 8000];
-    const questions = [...]; // Importa le domande dal file JSON
+    const gameBoard = document.getElementById("categories");
+    const questionModal = document.getElementById("questionModal");
+    const teamModal = document.getElementById("teamModal");
+    const questionText = document.getElementById("questionText");
+    const answersContainer = document.getElementById("answers");
+    const closeModalButton = document.getElementById("closeModal");
 
-    const gameContainer = document.getElementById("categories");
+    let currentTeam = null;
+    let currentScore = [1000, 1000, 1000, 1000];
+    let selectedCategory = null;
 
-    // Creazione dinamica della griglia di categorie e punteggi
-    categories.forEach((category, colIndex) => {
-        const categoryHeader = document.createElement("div");
-        categoryHeader.classList.add("category");
-        categoryHeader.textContent = category;
-        gameContainer.appendChild(categoryHeader);
+    const data = {
+        categories: ["Storia", "Geografia", "Sport", "Scienze", "Cultura Generale", "Arte"],
+        questions: [/* Inserire qui il contenuto JSON */]
+    };
 
-        points.forEach((point, rowIndex) => {
-            const questionCell = document.createElement("div");
-            questionCell.classList.add("question-cell");
-            questionCell.textContent = point;
-            questionCell.dataset.category = colIndex;
-            questionCell.dataset.point = point;
-            questionCell.addEventListener("click", handleQuestionClick);
-            gameContainer.appendChild(questionCell);
+    const renderBoard = () => {
+        data.categories.forEach((category, categoryIndex) => {
+            const column = document.createElement("div");
+            column.classList.add("category");
+
+            const header = document.createElement("div");
+            header.classList.add("header");
+            header.textContent = category;
+            column.appendChild(header);
+
+            data.questions[categoryIndex].questions.forEach((question, questionIndex) => {
+                const button = document.createElement("button");
+                button.classList.add("question");
+                button.dataset.category = categoryIndex;
+                button.dataset.question = questionIndex;
+                button.textContent = question.points;
+                button.addEventListener("click", () => selectTeam(categoryIndex, questionIndex));
+                column.appendChild(button);
+            });
+
+            gameBoard.appendChild(column);
         });
-    });
+    };
 
-    function handleQuestionClick(event) {
-        const category = event.target.dataset.category;
-        const point = event.target.dataset.point;
-        const questionData = getQuestion(category, point);
+    const selectTeam = (categoryIndex, questionIndex) => {
+        selectedCategory = { categoryIndex, questionIndex };
+        teamModal.classList.remove("hidden");
+    };
 
-        if (questionData) {
-            showQuestionModal(questionData);
-        }
-    }
-
-    function getQuestion(category, point) {
-        return questions.find(q => q.category === parseInt(category) && q.point === parseInt(point));
-    }
-
-    function showQuestionModal(questionData) {
-        const modal = document.getElementById("question-modal");
-        const questionText = document.getElementById("question-text");
-        const answersContainer = document.getElementById("answers");
+    const showQuestion = () => {
+        const { categoryIndex, questionIndex } = selectedCategory;
+        const questionData = data.questions[categoryIndex].questions[questionIndex];
 
         questionText.textContent = questionData.text;
         answersContainer.innerHTML = "";
 
         questionData.answers.forEach((answer, index) => {
-            const answerButton = document.createElement("button");
-            answerButton.textContent = answer;
-            answerButton.addEventListener("click", () => handleAnswerClick(index, questionData.correct));
-            answersContainer.appendChild(answerButton);
+            const button = document.createElement("button");
+            button.classList.add("answer");
+            button.textContent = answer;
+            button.addEventListener("click", () => checkAnswer(index, questionData.correct, questionData.points));
+            answersContainer.appendChild(button);
         });
 
-        modal.classList.remove("hidden");
-    }
+        questionModal.classList.remove("hidden");
+    };
 
-    function handleAnswerClick(selectedIndex, correctIndex) {
-        const modal = document.getElementById("question-modal");
-
-        if (selectedIndex === correctIndex) {
+    const checkAnswer = (selected, correct, points) => {
+        if (selected === correct) {
+            currentScore[currentTeam - 1] += points;
             alert("Risposta corretta!");
         } else {
-            alert("Risposta sbagliata.");
+            currentScore[currentTeam - 1] -= points;
+            alert("Risposta sbagliata!");
         }
 
-        modal.classList.add("hidden");
-    }
+        closeQuestion();
+    };
 
-    document.getElementById("close-question").addEventListener("click", () => {
-        document.getElementById("question-modal").classList.add("hidden");
+    const closeQuestion = () => {
+        questionModal.classList.add("hidden");
+
+        const { categoryIndex, questionIndex } = selectedCategory;
+        const button = document.querySelector(`button[data-category='${categoryIndex}'][data-question='${questionIndex}']`);
+        button.disabled = true;
+        button.classList.add("answered");
+    };
+
+    teamModal.addEventListener("click", (event) => {
+        if (event.target.classList.contains("teamButton")) {
+            currentTeam = parseInt(event.target.dataset.team);
+            teamModal.classList.add("hidden");
+            showQuestion();
+        }
     });
+
+    closeModalButton.addEventListener("click", () => {
+        questionModal.classList.add("hidden");
+    });
+
+    renderBoard();
 });
