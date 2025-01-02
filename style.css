@@ -158,3 +158,8 @@ body {
 .teamButton:hover {
     background-color: #c0392b;
 }
+
+.hidden {
+    display: none;
+}
+
