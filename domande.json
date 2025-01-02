@@ -1,152 +1,223 @@
-[
-  {
-    "text": "Qual è la capitale d'Italia?",
-    "answers": ["Roma", "Milano", "Napoli", "Torino"],
-    "correct": 0
-  },
-  {
-    "text": "Qual è il monte più alto del mondo?",
-    "answers": ["Monte Bianco", "Monte Everest", "K2", "Kilimangiaro"],
-    "correct": 1
-  },
-  {
-    "text": "Chi ha dipinto la Gioconda?",
-    "answers": ["Michelangelo", "Leonardo da Vinci", "Raffaello", "Donatello"],
-    "correct": 1
-  },
-  {
-    "text": "In che anno è iniziata la Prima Guerra Mondiale?",
-    "answers": ["1912", "1914", "1916", "1918"],
-    "correct": 1
-  },
-  {
-    "text": "Quale è il fiume più lungo d'Italia?",
-    "answers": ["Po", "Adige", "Arno", "Tevere"],
-    "correct": 0
-  },
-  {
-    "text": "Chi ha scritto 'La Divina Commedia'?",
-    "answers": ["Petrarca", "Boccaccio", "Dante Alighieri", "Manzoni"],
-    "correct": 2
-  },
-  {
-    "text": "Qual è il pianeta più grande del sistema solare?",
-    "answers": ["Terra", "Giove", "Saturno", "Nettuno"],
-    "correct": 1
-  },
-  {
-    "text": "Chi ha inventato il telefono?",
-    "answers": ["Edison", "Bell", "Tesla", "Marconi"],
-    "correct": 1
-  },
-  {
-    "text": "Quale è la formula chimica dell'acqua?",
-    "answers": ["H2O", "CO2", "O2", "H2O2"],
-    "correct": 0
-  },
-  {
-    "text": "In quale anno l'uomo è sbarcato sulla Luna?",
-    "answers": ["1965", "1969", "1972", "1975"],
-    "correct": 1
-  },
-  {
-    "text": "Quale paese ha vinto il maggior numero di Coppe del Mondo di calcio?",
-    "answers": ["Italia", "Germania", "Brasile", "Argentina"],
-    "correct": 2
-  },
-  {
-    "text": "Chi ha scritto 'I Promessi Sposi'?",
-    "answers": ["Dante", "Manzoni", "Leopardi", "Verga"],
-    "correct": 1
-  },
-  {
-    "text": "Quale è la capitale del Giappone?",
-    "answers": ["Kyoto", "Osaka", "Tokyo", "Hiroshima"],
-    "correct": 2
-  },
-  {
-    "text": "Quale organo del corpo umano filtra il sangue?",
-    "answers": ["Fegato", "Cuore", "Polmoni", "Reni"],
-    "correct": 3
-  },
-  {
-    "text": "Chi ha scritto 'Romeo e Giulietta'?",
-    "answers": ["Shakespeare", "Dickens", "Hemingway", "Tolkien"],
-    "correct": 0
-  },
-  {
-    "text": "Quale è la moneta ufficiale del Regno Unito?",
-    "answers": ["Euro", "Sterlina", "Dollaro", "Franco"],
-    "correct": 1
-  },
-  {
-    "text": "Quale elemento chimico ha simbolo O?",
-    "answers": ["Oro", "Ossigeno", "Osmio", "Ottanio"],
-    "correct": 1
-  },
-  {
-    "text": "Quale stato americano ha come capitale Sacramento?",
-    "answers": ["Florida", "California", "Texas", "Nevada"],
-    "correct": 1
-  },
-  {
-    "text": "In quale anno è caduto il Muro di Berlino?",
-    "answers": ["1987", "1989", "1991", "1993"],
-    "correct": 1
-  },
-  {
-    "text": "Chi è l'autore della teoria della relatività?",
-    "answers": ["Newton", "Einstein", "Galileo", "Bohr"],
-    "correct": 1
-  },
-  {
-    "text": "Quale è la capitale della Francia?",
-    "answers": ["Parigi", "Marsiglia", "Lione", "Nizza"],
-    "correct": 0
-  },
-  {
-    "text": "Quale strumento misura i terremoti?",
-    "answers": ["Termometro", "Barometro", "Sismografo", "Anemometro"],
-    "correct": 2
-  },
-  {
-    "text": "Quale animale è noto come 're della foresta'?",
-    "answers": ["Elefante", "Leone", "Tigre", "Orso"],
-    "correct": 1
-  },
-  {
-    "text": "In quale continente si trova l'Egitto?",
-    "answers": ["Asia", "Africa", "Europa", "America"],
-    "correct": 1
-  },
-  {
-    "text": "Quale metallo ha il simbolo Fe?",
-    "answers": ["Rame", "Ferro", "Oro", "Argento"],
-    "correct": 1
-  },
-  {
-    "text": "Quale oceano è il più grande?",
-    "answers": ["Atlantico", "Pacifico", "Indiano", "Artico"],
-    "correct": 1
-  },
-  {
-    "text": "Chi ha scoperto l'America?",
-    "answers": ["Vespucci", "Colombo", "Magellano", "Cortès"],
-    "correct": 1
-  },
-  {
-    "text": "Quale è la capitale della Germania?",
-    "answers": ["Monaco", "Francoforte", "Amburgo", "Berlino"],
-    "correct": 3
-  },
-  {
-    "text": "Quale pianeta è noto come il pianeta rosso?",
-    "answers": ["Venere", "Marte", "Giove", "Saturno"],
-    "correct": 1
-  },
-  {
-    "text": "Quale organo è responsabile della pompa del sangue?",
-    "answers": ["Cervello", "Polmoni", "Fegato", "Cuore"],
-    "correct": 3
-  }
-]
+{
+  "categories": [
+    "Storia",
+    "Geografia",
+    "Sport",
+    "Scienze",
+    "Cultura Generale",
+    "Arte"
+  ],
+  "questions": [
+    {
+      "category": "Storia",
+      "questions": [
+        {
+          "text": "Qual è la capitale d'Italia?",
+          "answers": ["Roma", "Milano", "Napoli", "Torino"],
+          "correct": 0,
+          "points": 1000
+        },
+        {
+          "text": "In che anno è iniziata la Prima Guerra Mondiale?",
+          "answers": ["1912", "1914", "1916", "1918"],
+          "correct": 1,
+          "points": 2000
+        },
+        {
+          "text": "Chi ha scritto 'La Divina Commedia'?",
+          "answers": ["Petrarca", "Boccaccio", "Dante Alighieri", "Manzoni"],
+          "correct": 2,
+          "points": 3000
+        },
+        {
+          "text": "In quale anno è caduto il Muro di Berlino?",
+          "answers": ["1987", "1989", "1991", "1993"],
+          "correct": 1,
+          "points": 4000
+        },
+        {
+          "text": "Chi ha scoperto l'America?",
+          "answers": ["Vespucci", "Colombo", "Magellano", "Cortès"],
+          "correct": 1,
+          "points": 8000
+        }
+      ]
+    },
+    {
+      "category": "Geografia",
+      "questions": [
+        {
+          "text": "Qual è il monte più alto del mondo?",
+          "answers": ["Monte Bianco", "Monte Everest", "K2", "Kilimangiaro"],
+          "correct": 1,
+          "points": 1000
+        },
+        {
+          "text": "Quale è il fiume più lungo d'Italia?",
+          "answers": ["Po", "Adige", "Arno", "Tevere"],
+          "correct": 0,
+          "points": 2000
+        },
+        {
+          "text": "Quale oceano è il più grande?",
+          "answers": ["Atlantico", "Pacifico", "Indiano", "Artico"],
+          "correct": 1,
+          "points": 3000
+        },
+        {
+          "text": "In quale continente si trova l'Egitto?",
+          "answers": ["Asia", "Africa", "Europa", "America"],
+          "correct": 1,
+          "points": 4000
+        },
+        {
+          "text": "Quale è la capitale della Germania?",
+          "answers": ["Monaco", "Francoforte", "Amburgo", "Berlino"],
+          "correct": 3,
+          "points": 8000
+        }
+      ]
+    },
+    {
+      "category": "Sport",
+      "questions": [
+        {
+          "text": "Quale paese ha vinto il maggior numero di Coppe del Mondo di calcio?",
+          "answers": ["Italia", "Germania", "Brasile", "Argentina"],
+          "correct": 2,
+          "points": 1000
+        },
+        {
+          "text": "Chi ha vinto più medaglie olimpiche nella storia?",
+          "answers": ["Phelps", "Bolt", "Lewis", "Nadia Comaneci"],
+          "correct": 0,
+          "points": 2000
+        },
+        {
+          "text": "Quale squadra di calcio ha vinto più Champions League?",
+          "answers": ["Real Madrid", "Barcellona", "Milan", "Liverpool"],
+          "correct": 0,
+          "points": 3000
+        },
+        {
+          "text": "Qual è il record mondiale per i 100 metri?",
+          "answers": ["9.58s", "9.62s", "9.72s", "9.80s"],
+          "correct": 0,
+          "points": 4000
+        },
+        {
+          "text": "Chi è considerato il GOAT (Greatest of All Time) del basket?",
+          "answers": ["Michael Jordan", "LeBron James", "Kobe Bryant", "Magic Johnson"],
+          "correct": 0,
+          "points": 8000
+        }
+      ]
+    },
+    {
+      "category": "Scienze",
+      "questions": [
+        {
+          "text": "Qual è il pianeta più grande del sistema solare?",
+          "answers": ["Terra", "Giove", "Saturno", "Nettuno"],
+          "correct": 1,
+          "points": 1000
+        },
+        {
+          "text": "Chi ha inventato il telefono?",
+          "answers": ["Edison", "Bell", "Tesla", "Marconi"],
+          "correct": 1,
+          "points": 2000
+        },
+        {
+          "text": "Quale è la formula chimica dell'acqua?",
+          "answers": ["H2O", "CO2", "O2", "H2O2"],
+          "correct": 0,
+          "points": 3000
+        },
+        {
+          "text": "Quale elemento chimico ha simbolo O?",
+          "answers": ["Oro", "Ossigeno", "Osmio", "Ottanio"],
+          "correct": 1,
+          "points": 4000
+        },
+        {
+          "text": "Chi è l'autore della teoria della relatività?",
+          "answers": ["Newton", "Einstein", "Galileo", "Bohr"],
+          "correct": 1,
+          "points": 8000
+        }
+      ]
+    },
+    {
+      "category": "Cultura Generale",
+      "questions": [
+        {
+          "text": "Chi ha scritto 'I Promessi Sposi'?",
+          "answers": ["Dante", "Manzoni", "Leopardi", "Verga"],
+          "correct": 1,
+          "points": 1000
+        },
+        {
+          "text": "Qual è la capitale del Giappone?",
+          "answers": ["Kyoto", "Osaka", "Tokyo", "Hiroshima"],
+          "correct": 2,
+          "points": 2000
+        },
+        {
+          "text": "Quale organo del corpo umano filtra il sangue?",
+          "answers": ["Fegato", "Cuore", "Polmoni", "Reni"],
+          "correct": 3,
+          "points": 3000
+        },
+        {
+          "text": "Quale è la moneta ufficiale del Regno Unito?",
+          "answers": ["Euro", "Sterlina", "Dollaro", "Franco"],
+          "correct": 1,
+          "points": 4000
+        },
+        {
+          "text": "Quale strumento misura i terremoti?",
+          "answers": ["Termometro", "Barometro", "Sismografo", "Anemometro"],
+          "correct": 2,
+          "points": 8000
+        }
+      ]
+    },
+    {
+      "category": "Arte",
+      "questions": [
+        {
+          "text": "Chi ha dipinto la Gioconda?",
+          "answers": ["Michelangelo", "Leonardo da Vinci", "Raffaello", "Donatello"],
+          "correct": 1,
+          "points": 1000
+        },
+        {
+          "text": "Chi ha scritto 'Romeo e Giulietta'?",
+          "answers": ["Shakespeare", "Dickens", "Hemingway", "Tolkien"],
+          "correct": 0,
+          "points": 2000
+        },
+        {
+          "text": "Quale animale è noto come 're della foresta'?",
+          "answers": ["Elefante", "Leone", "Tigre", "Orso"],
+          "correct": 1,
+          "points": 3000
+        },
+        {
+          "text": "Chi ha scritto 'La Divina Commedia'?",
+          "answers": ["Dante", "Boccaccio", "Petrarca", "Tasso"],
+          "correct": 0,
+          "points": 4000
+        },
+        {
+          "text": "Qual è il pianeta noto come il pianeta rosso?",
+          "answers": ["Venere", "Marte", "Giove", "Saturno"],
+          "correct": 1,
+          "points": 8000
+        }
+      ]
+    }
+  ]
+}
+
