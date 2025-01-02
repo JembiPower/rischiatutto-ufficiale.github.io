@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rischiatutto</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #b22222;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #game-board {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 100px;
+      gap: 10px;
+      max-width: 1200px;
+      margin: 20px;
+    }
+
+    .category {
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: bold;
+      background-color: #ffcc00;
+      color: #b22222;
+      padding: 10px;
+    }
+
+    .question {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1em;
+      background-color: white;
+      color: #b22222;
+      border-radius: 50px;
+      height: 80px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .question.used {
+      background-color: white;
+      color: #000;
+    }
+
+    #logo {
+      grid-column: span 6;
+      text-align: center;
+      background-color: white;
+      color: #b22222;
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      z-index: 10;
+    }
+
+    #modal .content {
+      background-color: #b22222;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #modal .answers button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    #scores {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .score-board {
+      margin: 10px;
+      display: inline-block;
+      padding: 10px;
+      background-color: white;
+      color: #b22222;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-board">
+    <div id="logo">RISCHIATUTTO</div>
+    <div class="category">Storia</div>
+    <div class="category">Geografia</div>
+    <div class="category">Sport</div>
+    <div class="category">Scienze</div>
+    <div class="category">Cultura Generale</div>
+    <div class="category">Arte</div>
+
+    <!-- Questions -->
+    <div class="question" data-score="1000">1000</div>
+    <div class="question" data-score="1000">1000</div>
+    <div class="question" data-score="1000">1000</div>
+    <div class="question" data-score="1000">1000</div>
+    <div class="question" data-score="1000">1000</div>
+    <div class="question" data-score="1000">1000</div>
+
+    <div class="question" data-score="2000">2000</div>
+    <div class="question" data-score="2000">2000</div>
+    <div class="question" data-score="2000">2000</div>
+    <div class="question" data-score="2000">2000</div>
+    <div class="question" data-score="2000">2000</div>
+    <div class="question" data-score="2000">2000</div>
+
+    <div class="question" data-score="3000">3000</div>
+    <div class="question" data-score="3000">3000</div>
+    <div class="question" data-score="3000">3000</div>
+    <div class="question" data-score="3000">3000</div>
+    <div class="question" data-score="3000">3000</div>
+    <div class="question" data-score="3000">3000</div>
+
+    <div class="question" data-score="4000">4000</div>
+    <div class="question" data-score="4000">4000</div>
+    <div class="question" data-score="4000">4000</div>
+    <div class="question" data-score="4000">4000</div>
+    <div class="question" data-score="4000">4000</div>
+    <div class="question" data-score="4000">4000</div>
+
+    <div class="question" data-score="8000">8000</div>
+    <div class="question" data-score="8000">8000</div>
+    <div class="question" data-score="8000">8000</div>
+    <div class="question" data-score="8000">8000</div>
+    <div class="question" data-score="8000">8000</div>
+    <div class="question" data-score="8000">8000</div>
+  </div>
+
+  <div id="scores">
+    <div class="score-board">Squadra 1: <span id="score-1">1000</span></div>
+    <div class="score-board">Squadra 2: <span id="score-2">1000</span></div>
+    <div class="score-board">Squadra 3: <span id="score-3">1000</span></div>
+    <div class="score-board">Squadra 4: <span id="score-4">1000</span></div>
+  </div>
+
+  <div id="modal" class="hidden">
+    <div class="content">
+      <h2 id="question-text">Domanda</h2>
+      <div class="answers">
+        <button data-correct="true">Risposta 1</button>
+        <button>Risposta 2</button>
+        <button>Risposta 3</button>
+        <button>Risposta 4</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const questionText = document.getElementById('question-text');
+    const answers = modal.querySelector('.answers');
+    const scoreElements = [
+      document.getElementById('score-1'),
+      document.getElementById('score-2'),
+      document.getElementById('score-3'),
+      document.getElementById('score-4'),
+    ];
+    const gameBoard = document.getElementById('game-board');
+
+    let currentScore = [1000, 1000, 1000, 1000];
+    let currentQuestion = null;
+
+    // Load questions from JSON file
+    let questions = [];
+    fetch('questions.json')
+      .then(response => response.json())
+      .then(data => {
+        questions = data;
+      });
+
+    gameBoard.addEventListener('click', (event) => {
+      const questionElement = event.target;
+      if (questionElement.classList.contains('question') && !questionElement.classList.contains('used')) {
+        const score = parseInt(questionElement.getAttribute('data-score'), 10);
+        currentQuestion = { element: questionElement, score };
+        showQuestion(questions[Math.floor(Math.random() * questions.length)]);
+      }
+    });
+
+    function showQuestion(question) {
+      questionText.textContent = question.text;
+      answers.innerHTML = '';
+      question.answers.forEach((answer, index) => {
+        const button = document.createElement('button');
+        button.textContent = answer;
+        button.dataset.correct = index === question.correct;
+        button.addEventListener('click', checkAnswer);
+        answers.appendChild(button);
+      });
+      modal.classList.remove('hidden');
+    }
+
+    function checkAnswer(event) {
+      const isCorrect = event.target.dataset.correct === 'true';
+      modal.classList.add('hidden');
+
+      if (isCorrect) {
+        currentQuestion.element.textContent = currentQuestion.score;
+        currentQuestion.element.classList.add('used');
+      } else {
+        alert('Risposta sbagliata!');
+      }
+    }
+  </script>
+</body>
+</html>
