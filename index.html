@@ -10,25 +10,37 @@
     <div id="game">
         <div id="logo">RISCHIATUTTO</div>
         <div id="categories">
-            <!-- Categories and Questions will be dynamically loaded here -->
-        </div>
-    </div>
-
-    <!-- Modal for Question -->
-    <div id="questionModal" class="modal hidden">
-        <div class="modal-content">
-            <h2 id="questionText"></h2>
-            <div id="answers">
-                <!-- Answers will be dynamically loaded here -->
+            <div class="category">
+                <div class="header">Storia</div>
+                <button class="question" data-category="0" data-points="1000">1000</button>
+                <button class="question" data-category="0" data-points="2000">2000</button>
+                <button class="question" data-category="0" data-points="3000">3000</button>
+                <button class="question" data-category="0" data-points="4000">4000</button>
+                <button class="question" data-category="0" data-points="8000">8000</button>
             </div>
-            <button id="closeModal">Torna al gioco</button>
+            <div class="category">
+                <div class="header">Geografia</div>
+                <button class="question" data-category="1" data-points="1000">1000</button>
+                <button class="question" data-category="1" data-points="2000">2000</button>
+                <button class="question" data-category="1" data-points="3000">3000</button>
+                <button class="question" data-category="1" data-points="4000">4000</button>
+                <button class="question" data-category="1" data-points="8000">8000</button>
+            </div>
+            <!-- Altre categorie simili -->
         </div>
     </div>
 
-    <!-- Team Selection Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="question-text">Domanda...</p>
+            <div id="answers"></div>
+            <button id="closeModal" class="hidden">Torna al gioco</button>
+        </div>
+    </div>
+
     <div id="teamModal" class="modal hidden">
         <div class="modal-content">
-            <h2>Seleziona la tua squadra</h2>
+            <p>Seleziona la tua squadra:</p>
             <div id="teamSelection">
                 <button class="teamButton" data-team="1">Squadra 1</button>
                 <button class="teamButton" data-team="2">Squadra 2</button>
